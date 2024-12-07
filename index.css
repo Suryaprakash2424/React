@@ -10,12 +10,18 @@ width: 100px;
 }
 
 .nav-items>ul{
-  text-decoration: underline;
 display: flex;
 list-style-type: none;
-
 }
-.nav-items>ul>li{
+
+.nav-items>ul>.online{
+  padding: 20px;
+  font-size: 24px;
+  font-style: italic;
+}
+
+.nav-items>ul >.navitem{
+  text-decoration: underline;
   padding: 20px;
   font-size: 24px;
   font-style: italic;
@@ -67,9 +73,46 @@ shimmer-card{
 }
 
 .login{
-  padding: 0 10px;
+  text-align: center;
+  font-size: 24px;
+  text-decoration: underline;
+  font-style: italic;
 }
 
 .filter{
   display: flex;
 }
+
+.itemimage{
+  width: 200px;
+  height: 200px;
+  border-radius: 5px 5px 0 0;
+}
+
+.itemcontainer{
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap:20px;
+}
+
+.itemcontainer>li{
+  background-color: #f0f0f0;
+  border: 10px;
+  width: 200px;
+  height: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+  list-style-type: none;
+}
+
+
+.itemframe:hover{
+  cursor: grabbing;
+}
+
+.avatar{
+  width: 200px;
+  height: 200px;
+}
+
