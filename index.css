@@ -1,4 +1,8 @@
-.header{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .header{
   justify-content: space-between;
   display: flex;
   border: solid black 1px;
@@ -115,4 +119,4 @@ shimmer-card{
   width: 200px;
   height: 200px;
 }
-
+ */

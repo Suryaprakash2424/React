@@ -24,3 +24,19 @@
 #React hooks(Normal JS utilitu functions)
     -useState() => Superpowerful state variables
     -useEffect() => 
+
+
+# Types of testing(developer)
+- Unit Testing
+- Integration Testing
+- End to End Testing / (e2e Testing)
+
+#setting up testing in our app
+- install react testing liberary
+- install jest
+- install babel dependencies
+- configure bebel (babel.config.js)
+- Configure parcel Config file to disable default babel transpilation(.parcelrc file)
+- Jest install -> npx jest --init
+- Install jsdom library
+
