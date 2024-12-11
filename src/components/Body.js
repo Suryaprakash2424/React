@@ -1,4 +1,4 @@
-import RestaurentCard, { withPromotedLabel, withPromotedLabel } from "./RestaurentCard";
+import RestaurentCard, { withPromotedLabel} from "./RestaurentCard";
 import { useContext, useEffect, useState } from "react";
 import Shimmer from "./shimmer";
 import { RES_URL } from "../utils/constants";
@@ -9,7 +9,7 @@ const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const RestaurantCardPromoted = withPromotedLabel(listOfRestaurants);
+    const RestaurantCardPromoted = withPromotedLabel(RestaurentCard);
 
     useEffect(() => {
         fetchData();
@@ -34,29 +34,29 @@ const Body = () => {
     const { loggedInUser, setUserName } = useContext(UserContext);
 
   // conditional rendering  
-    return listOfRestaurants.length === 0 ? (<Shimmer />) :
+    return listOfRestaurants.length === 0 ? 
+    (<Shimmer />) :
     (   <div className="body">
             <div className="filter flex">
                 <div className="m-4 p-4">
-                    <input type="text" className="border px-2 border-solid border-black rounded" value={searchText} onChange={(e) => { setSearchText(e.target.value); }}/>
+                    <input type="text" data-testid="searchInput" className="border px-2 border-solid border-black rounded" value={searchText} onChange={(e) => { setSearchText(e.target.value); }}/>
                     <button className="px-4 bg-orange-300 m-2 rounded-full ..." onClick={() => {
                         const filteredRestaurant = listOfRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurant(filteredRestaurant);
                     }}>search</button>
                 <button className="px-4 bg-orange-300 m-2 rounded-full ... " onClick={() => {
-                    const filteredList = listOfRestaurants.filter((resList) => resList.info.avgRating > 4.5);
-                    setFilteredRestaurant(filteredList);
+                    const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4.2);
+                        setFilteredRestaurant(filteredList);
+                        // console.log(filteredList);
                 }}>
                     Top Rated Restaurent
                 </button>
-                
                     <label className="px-2">UserName:</label>
                     <input className="border px-2  my-auto border-solid border-black rounded "
                         value={loggedInUser}
-                        onClick={(e) => setUserName(e.target.value)}></input>
-                
+                        onClick={(e) => setUserName(e.target.value)}>    
+                    </input>
                 </div>
-                
             </div>
             <div className="flex flex-wrap">
                 {filteredRestaurant.map((restaurant) => (
@@ -64,8 +64,9 @@ const Body = () => {
                         to={"/restaurants/" + restaurant?.info.id}
                         key={restaurant?.info.id} >
                         {   restaurant.info?.promoted ?
-                                (<RestaurantCardPromoted resData={restaurant} />)
-                                : (<RestaurentCard resData={restaurant} />)}
+                                (<RestaurantCardPromoted resData={restaurant?.info} />)
+                            : (<RestaurentCard resData={restaurant?.info} />)
+                        }
                     </Link>
                     // <RestaurentCard resData={restaurant}/>
                 ))}

@@ -1,7 +1,9 @@
+import React from "react";
 import { CDN_URL } from "../utils/constants";
 
 const RestaurentCard = (props) => {
-const { resData } = props;
+  const { resData } = props;
+  // console.log(resData);
 
   const {
     name,
@@ -10,10 +12,10 @@ const { resData } = props;
     sla,
     avgRating,
     costForTwo
-  } = resData?.info;
+  } = resData;
 
   return (
-    <div className="m-4 p-4 w-52 bg-gray-100 rounded-lg hover:bg-gray-300" >
+    <div data-testid="rescard" className="m-4 p-4 w-52 bg-gray-100 rounded-lg hover:bg-gray-300" >
       <img className="content-center rounded-lg shadow-sm" alt="res-logo" src={CDN_URL + cloudinaryImageId}/>
       <h3 className="font-bold py-2 italic underline">{name}</h3>
       <h3 >{cuisines.join(", ")}</h3>
@@ -30,7 +32,7 @@ export const withPromotedLabel = (RestaurentCard) => {
   return (props) => {
     return (
       <div>
-        <label>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">
           Promoted
         </label>
         <RestaurentCard {...props} />
